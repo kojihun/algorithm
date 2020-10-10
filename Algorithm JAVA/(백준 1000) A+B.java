@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 /**
  * @author Kojihun
- * (백준 2557) Hello World!
+ * (백준 1000) A+B
  */
 
 public class Main {
