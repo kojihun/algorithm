@@ -1,6 +1,6 @@
 # Algorithm
 
-# Use Language
- -Java
- -JavaScript
- -C
+## Use Language
+ - Java
+ - JavaScript
+ - C
