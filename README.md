@@ -1,4 +1,4 @@
-# Algorithm(Backjun Site)
+# Algorithm(Backjun)
 
 ### Use Language
  - Java
