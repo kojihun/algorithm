@@ -1,4 +1,4 @@
-# Algorithm(Baekjoon)
+# Algorithm(Backjoon 🎈)
 
 ### Use Language
  - Java
