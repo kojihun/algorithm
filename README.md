@@ -2,5 +2,5 @@
 
 ### Use Language
  - Java
- - JavaScript
+ - Python
  - C
