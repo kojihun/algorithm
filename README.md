@@ -1,4 +1,4 @@
-# Algorithm(Backjoon)
+# Algorithm
 
 ### Use Language
  + Java
