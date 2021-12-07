@@ -1,4 +1,4 @@
-//ÀÎÁ¢ Çà·Ä·Î Ç¥Çö
+//ì¸ì ‘ í–‰ë ¬ë¡œ í‘œí˜„
 #include "iostream"
 using namespace std;
 #define MAX 5
@@ -12,7 +12,6 @@ class QueueType {
 	int queue[MAX];
 
 public: 
-
 	void init(QueueType *q) {
 		q->front = q->rear = -1;
 	}
@@ -35,12 +34,11 @@ public:
 };
 
 class GraphType {
-	int n; //Á¤Á¡ÀÇ °³¼ö
+	int n; //ì •ì ì˜ ê°œìˆ˜
 	int adj_mat[MAX][MAX];
 	int count;
-
 public:
-	//±×·¡ÇÁ ÃÊ±âÈ­
+	//ê·¸ë˜í”„ ì´ˆê¸°í™”
 	void graph_init(GraphType *g) {
 		int r, c;
 		g->n = 0;
@@ -50,7 +48,7 @@ public:
 			}
 		}
 	}
-	//È­¸é Ãâ·Â
+	//í™”ë©´ ì¶œë ¥
 	void graph_display(GraphType *g) {
 		for (int r = 0; r < MAX; r++) {
 			for (int c = 0; c < MAX; c++) {
@@ -60,19 +58,19 @@ public:
 		}
 	}
 
-	//Á¤Á¡ »ğÀÔ ¿¬»ê
+	//ì •ì  ì‚½ì… ì—°ì‚°
 	void insert_vertex(GraphType *g, int v) {
 		if (((g->n) + v) > MAX) {
-			cout << "Á¤Á¡ °³¼ö ÃÊ°ú";
+			cout << "ì •ì  ê°œìˆ˜ ì´ˆê³¼";
 			return;
 		}
 		g->n += v;
 	}
 
-	//°£¼± »ğÀÔ ¿¬»ê
+	//ê°„ì„  ì‚½ì… ì—°ì‚°
 	void insert_edge(GraphType *g, int start, int end) {
 		if (start >= g->n || end >= g->n) {
-			cout << "Á¤Á¡ ¹øÈ£ ¿À·ù";
+			cout << "ì •ì  ë²ˆí˜¸ ì˜¤ë¥˜";
 			return;
 		}
 		g->adj_mat[start][end] = 1;
@@ -81,13 +79,13 @@ public:
 
 	void onewayInsert_edge(GraphType *g, int start, int end) {
 		if (start >= g->n || end >= g->n) {
-			cout << "Á¤Á¡ ¹øÈ£ ¿À·ù";
+			cout << "ì •ì  ë²ˆí˜¸ ì˜¤ë¥˜";
 			return;
 		}
 		g->adj_mat[start][end] = 1;
 	}
 
-	//±íÀÌ Å½»ö
+	//ê¹Šì´ íƒìƒ‰
 	void dfs_mat(GraphType *g, int v) {
 		int w;
 		visited[v] = count;
@@ -136,7 +134,6 @@ class unionFind {
 	int num[MAX];
 
 public:
-
 	void set_init(int n) {
 		for (int i = 0; i < n; i++) {
 			parent[i] = -1;
@@ -191,8 +188,6 @@ void main() {
 	Graph.dfs_mat(&Graph, 0);
 	Graph.bfs_mat(&Graph, 0);
 	Graph.is_connect(&Graph);
-
-
 
 	/*Graph.graph_init(&Graph);
 
