@@ -2,7 +2,6 @@
 using namespace std;
 
 void bubble() {
-
 	int arr[4] = { 3,2,4,1 };
 	int size = (sizeof(arr)/sizeof(int));
 	int count = 1;
@@ -19,18 +18,12 @@ void bubble() {
 			}
 			cout << endl;
 		}
-		cout << "¹öºíÁ¤·Ä:" << count << endl;
+		cout << "Â¹Ã¶ÂºÃ­ÃÂ¤Â·Ã„:" << count << endl;
 		count++;
 	}
-
-
-	
-
-
 }
 
 void selection() {
-
 	int arr[4] = { 4,3,2,1 };
 
 	int temp;
@@ -56,7 +49,6 @@ void selection() {
 }
 
 void insertion() {
-
 	int arr[4] = { 3,4,2,1 };
 	int temp;
 
@@ -70,20 +62,15 @@ void insertion() {
 					cout << arr[i];
 				}
 				cout << endl;
-
 			}
 		}
-
-
 	}
-
 	for (int i = 0; i < 4; i++) {
 		cout << arr[i];
 	}
-
 }
-void quickSort(int* arr, int left, int right)
-{
+
+void quickSort(int* arr, int left, int right) {
    int i = left;
    int j = right;
    int pivot = arr[(left + right) / 2];
