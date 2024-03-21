@@ -1,10 +1,10 @@
 # [level 2] 게임 맵 최단거리 - 1844 
 
-[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/1844) 
+[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/1844?language=cpp) 
 
 ### 성능 요약
 
-메모리: 52.8 MB, 시간: 3.15 ms
+메모리: 52.9 MB, 시간: 5.91 ms
 
 ### 구분
 
@@ -16,7 +16,7 @@
 
 ### 제출 일자
 
-2024년 2월 2일 12:0:33
+2024년 03월 21일 11:27:45
 
 ### 문제 설명
 
