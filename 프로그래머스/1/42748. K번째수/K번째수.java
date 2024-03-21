@@ -2,22 +2,22 @@ import java.util.*;
 
 class Solution {
     public int[] solution(int[] array, int[][] commands) {
-        List<Integer> answers = new ArrayList<>();
+        int[] answer = new int[commands.length];
         
         for(int i = 0; i < commands.length; i++) {
             int[] command = commands[i];
             int start = command[0] - 1;
             int end = command[1];
-            int target = command[2] - 1;
+            int pos = command[2];
             
-            int[] nArray = Arrays.copyOfRange(array, start, end);
-            Arrays.sort(nArray);
-            
-            answers.add(nArray[target]);
+            List<Integer> list = new ArrayList<>();
+            for(int j = start; j < end; j++) {
+                list.add(array[j]);
+            }
+            Collections.sort(list);
+            answer[i] = list.get(pos - 1);
         }
-        
-        return answers.stream()
-            .mapToInt(Integer::intValue)
-            .toArray();
+
+        return answer;
     }
 }
