@@ -1,21 +1,28 @@
-import java.util.Arrays;
+import java.util.*;
 
 class Solution {
     public int solution(int[] people, int limit) {
-        Arrays.sort(people);
-        int left = 0;
-        int right = people.length - 1;
         int boat = 0;
         
-        while(left <= right) {
-            int person1 = people[left];
-            int person2 = people[right];
+        // 몸무게 순으로 정렬
+        Arrays.sort(people);
+        
+        // 인덱스 선언
+        int firstIndex = 0;
+        int lastIndex = people.length - 1;
+        
+        while(firstIndex <= lastIndex) {
+            int person1 = people[firstIndex];
+            int person2 = people[lastIndex];
             
             if(person1 + person2 <= limit) {
-                left++; // 왼쪽 포인터를 오른쪽으로 이동
+                firstIndex++;
+                lastIndex--;
+                boat++;
+            }else {
+                lastIndex--;
+                boat++;
             }
-            right--; // 항상 오른쪽 포인터는 이동해야 함
-            boat++;
         }
         
         return boat;
