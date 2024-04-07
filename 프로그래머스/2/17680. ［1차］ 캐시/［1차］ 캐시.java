@@ -6,22 +6,21 @@ class Solution {
             return cities.length * 5;
         }
 
-        LinkedHashMap<String, Integer> cache = new LinkedHashMap<>(cacheSize, 0.75f, true);
+        LinkedList<String> cache = new LinkedList<>();
         int answer = 0;
 
         for (String city : cities) {
             String lowerCaseCity = city.toLowerCase();
-            if (cache.containsKey(lowerCaseCity)) {
+            if (cache.contains(lowerCaseCity)) {
                 answer += 1;
+                cache.remove(lowerCaseCity);
             } else {
                 answer += 5;
                 if (cache.size() >= cacheSize) {
-                    Iterator<Map.Entry<String, Integer>> iterator = cache.entrySet().iterator();
-                    iterator.next();
-                    iterator.remove();
+                    cache.removeFirst();
                 }
             }
-            cache.put(lowerCaseCity, 0);
+            cache.addLast(lowerCaseCity);
         }
 
         return answer;
