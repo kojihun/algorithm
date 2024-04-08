@@ -1,27 +1,28 @@
-import java.util.*;
-import java.math.*;
-
 class Solution {
-    public int solution(int n, int k) {
-        // 1. 정수 n을 k진수로 변환하기
-        String convertN = Integer.toString(n, k);
-        
-        // 2. 0을 기준으로 잘라서 배열에 넣고, 해당 수가 소수인지만 판별하면 되지 않을까?
-        int answer = 0;
-        
-        String[] convertNArray = convertN.split("0");
-        for(int i = 0; i < convertNArray.length; i++) {
-            if(!convertNArray[i].trim().equals("")) {
-                if(sieveOfEratosthenes(new BigInteger(convertNArray[i]))) {
-                    answer++;
-                }
-            }
-        }
-        
-        return answer;
+    public boolean isprime(long n){
+        if(n <= 1) return false;
+        else if(n == 2) return true;
+        for(int i = 2; i <= Math.sqrt(n); i++)
+            if(n % i == 0) 
+                return false;
+        return true;
     }
-    
-    public static boolean sieveOfEratosthenes(BigInteger n) {
-        return n.isProbablePrime(100);
+    public String to_Knum(int n, int k) {
+        String res = "";
+        while(n > 0) {
+            res = n % k + res;
+            n /= k;
+        }
+        return res;
+    }
+    public int solution(int n, int k) {
+        int answer = 0, i, j;
+        String s = Integer.toString(n, k);
+        for(i = 0; i < s.length(); i = j) {
+            for(j = i + 1; j < s.length() && s.charAt(j) != '0'; j++);
+            if(isprime(Long.parseLong(s.substring(i,j))))
+                answer++;
+        }
+        return answer;
     }
 }
