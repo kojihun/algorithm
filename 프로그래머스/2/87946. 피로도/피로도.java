@@ -1,25 +1,23 @@
 class Solution {
-    public static int answer = 0;
+    public static int maxEntree = Integer.MIN_VALUE;
     public int solution(int k, int[][] dungeons) {
-        // 1. 백트레킹을 위한 변수 선언
         boolean[] visited = new boolean[dungeons.length];
-        
-        // 2. DFS 메서드 호출
-        DFS(dungeons, k, visited, 0);
-        
-        // 3. 결과 리턴
-        return answer;
+        BFS(k, dungeons, visited, 0);
+        return maxEntree;
     }
     
-    public static void DFS(int[][] dungeons, int k, boolean[] visited, int depth) {
-        answer = Math.max(answer, depth);
+    public static void BFS(int k, int[][] dungeons, boolean[] visited, int depth) {
+        if(depth > maxEntree && depth != 0) {
+            maxEntree = depth;
+        }
         
-        // 2. 던전의 크기만큼 반복문 순회
         for(int i = 0; i < dungeons.length; i++) {
-            // 3. 해당 던전에 방문하지 않았을 경우
-            if(!visited[i] && dungeons[i][0] <= k) {
+            int minFatigue = dungeons[i][0];
+            int wasteFatigue = dungeons[i][1];
+            
+            if(k >= minFatigue && k >= wasteFatigue && !visited[i]) {
                 visited[i] = true;
-                DFS(dungeons, k - dungeons[i][1], visited, depth + 1);
+                BFS(k - wasteFatigue, dungeons, visited, depth + 1);
                 visited[i] = false;
             }
         }
