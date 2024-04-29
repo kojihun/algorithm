@@ -2,23 +2,24 @@ import java.util.*;
 
 class Solution {
     public int solution(int k, int[] tangerine) {
-        int[] answer = new int[10000001];
-        for(int i = 0; i < tangerine.length; i++) {
-            answer[tangerine[i]] = answer[tangerine[i]] + 1;
+        int sum = 0; // 고를 귤의 개수
+        int cnt = 0; // 최솟값 카운트
+        
+        HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();
+        for(int num : tangerine) {
+            map.put(num, map.getOrDefault(num, 0) + 1);
         }
-        
-        Arrays.sort(answer);
-        
-        int type = 0;
-        for(int i = answer.length - 1; i >= 0; i--) {
-            k = k - answer[i];
-            type++;
-            
-            if(k <= 0) {
+        ArrayList<Integer> valueList = new ArrayList<>(map.values());
+        Collections.sort(valueList, Collections.reverseOrder());
+        for (int v : valueList) {
+            if (sum + v >= k) {
+                cnt++;
                 break;
+            } else {
+                sum += v;
+                cnt++;
             }
         }
-        
-        return type;
+        return cnt;
     }
 }
