@@ -1,39 +1,57 @@
-import java.util.Stack;
+import java.util.*;
 
 class Solution {
     public int solution(String s) {
         int answer = 0;
         
-        for (int i = 0; i < s.length(); i++) {
-            if (isValid(s))
+        int total = s.length();
+        for(int i = 0; i < total; i++) {
+            s = s.substring(1) + s.substring(0, 1);
+            
+            boolean flag = isPair(s);
+            if(flag) {
                 answer++;
-            s = rotate(s);
+            }
         }
         
         return answer;
     }
     
-    // 문자열을 회전시키는 함수
-    private String rotate(String s) {
-        return s.substring(1) + s.charAt(0);
-    }
-    
-    // 올바른 괄호 문자열인지를 체크하는 함수
-    private boolean isValid(String s) {
-        Stack<Character> stack = new Stack<>();
+    private boolean isPair(String s) {
+        Stack<Character> stack = new Stack();
+        boolean isPair = false;
         
-        for (char c : s.toCharArray()) {
-            if (c == '(' || c == '[' || c == '{')
-                stack.push(c);
-            else {
-                if (stack.isEmpty())
-                    return false;
-                char top = stack.pop();
-                if ((c == ')' && top != '(') || (c == ']' && top != '[') || (c == '}' && top != '{'))
-                    return false;
+        char[] input = s.toCharArray();
+        for(int i = 0; i < input.length; i++) {
+            if(input[i] == '[' || input[i] == '(' || input[i] == '{') {
+                stack.push(input[i]);
+            }else {
+                if(!stack.isEmpty() && stack.peek() == '[' && input[i] == ']') {
+                    stack.pop();
+                    isPair = true;
+                    continue;
+                }
+                
+                if(!stack.isEmpty() && stack.peek() == '(' && input[i] == ')') {
+                    stack.pop();
+                    isPair = true;
+                    continue;
+                }
+                
+                if(!stack.isEmpty() && stack.peek() == '{' && input[i] == '}') {
+                    stack.pop();
+                    isPair = true;
+                    continue;
+                }
+                
+                isPair = false;
             }
         }
         
-        return stack.isEmpty();
+        if(!stack.isEmpty() || !isPair) {
+            isPair = false;
+        }
+        
+        return isPair;
     }
 }
