@@ -1,23 +1,26 @@
 class Solution {
-    public static int maxEntree = Integer.MIN_VALUE;
+    public static int maxCount = Integer.MIN_VALUE;
     public int solution(int k, int[][] dungeons) {
         boolean[] visited = new boolean[dungeons.length];
-        BFS(k, dungeons, visited, 0);
-        return maxEntree;
+        
+        DFS(k, dungeons, visited, 0);
+        
+        return maxCount;
     }
     
-    public static void BFS(int k, int[][] dungeons, boolean[] visited, int depth) {
-        if(depth > maxEntree && depth != 0) {
-            maxEntree = depth;
+    public static void DFS(int k, int[][] dungeons, boolean[] visited, int count) {
+        if(maxCount < count) {
+            maxCount = count;
         }
         
         for(int i = 0; i < dungeons.length; i++) {
-            int minFatigue = dungeons[i][0];
-            int wasteFatigue = dungeons[i][1];
+            int[] dungeon = dungeons[i];
+            int stamina = dungeon[0];
+            int consume = dungeon[1];
             
-            if(k >= minFatigue && k >= wasteFatigue && !visited[i]) {
+            if(!visited[i] && stamina <= k) {
                 visited[i] = true;
-                BFS(k - wasteFatigue, dungeons, visited, depth + 1);
+                DFS(k - consume, dungeons, visited, count + 1);
                 visited[i] = false;
             }
         }
