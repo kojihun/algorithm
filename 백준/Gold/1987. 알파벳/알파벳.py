@@ -1,6 +1,6 @@
 from collections import deque
 
-def solve_bfs():
+def solve_bfs_bitmask():
     r, c = map(int, input().split())
     board = [input() for _ in range(r)]
     start_alpha_index = ord(board[0][0]) - ord('A')
@@ -14,7 +14,8 @@ def solve_bfs():
 
     while queue:
         row, col, visited_mask = queue.popleft()
-        current_count = bin(visited_mask).count('1')  # 방문한 알파벳 수
+        current_count = bin(visited_mask).count('1')
+        max_count = max(max_count, current_count)
 
         for i in range(4):
             next_row = row + dx[i]
@@ -27,10 +28,9 @@ def solve_bfs():
                     next_state = (next_row, next_col, next_visited_mask)
                     if next_state not in visited_states:
                         visited_states.add(next_state)
-                        max_count = max(max_count, bin(next_visited_mask).count('1'))
                         queue.append(next_state)
 
     print(max_count)
 
 if __name__ == "__main__":
-    solve_bfs()
+    solve_bfs_bitmask()
